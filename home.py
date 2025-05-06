@@ -1,64 +1,105 @@
-import random
+################################  1
 
-questions = [
-    "What is the capital of France?Paris,London,Rome,Berlin",
-    "Who wrote 'Romeo and Juliet'?William Shakespeare,Charles Dickens,J.K. Rowling,Mark Twain",
-    "What is the largest planet in our solar system?Jupiter,Earth,Mars,Saturn",
-    "What year did the Titanic sink?1912,1905,1920,1898",
-    "What is the boiling point of water in Celsius?100 degrees,90 degrees,80 degrees,120 degrees",
-    "Who painted the Mona Lisa?Leonardo da Vinci,Pablo Picasso,Vincent van Gogh,Michelangelo",
-    "What is the chemical symbol for gold?Au,Ag,Fe,Pb",
-    "What is the smallest prime number?2,1,3,5",
-    "In which continent is the Amazon Rainforest?South America,Africa,Asia,Australia",
-    "How many legs does a spider have?Eight,Six,Ten,Four",
-    "Who is the CEO of Tesla?Elon Musk,Jeff Bezos,Bill Gates,Tim Cook",
-    "What does HTML stand for?HyperText Markup Language,HighText Machine Language,Hyper Tool Multi Language,Home Tool Markup Language",
-    "In which sport can you score a touchdown?American Football,Soccer,Baseball,Basketball",
-    "What is sushi traditionally wrapped in?Seaweed,Rice Paper,Lettuce,Tortilla",
-    "What is the hardest natural substance on Earth?Diamond,Steel,Quartz,Granite",
-    "What is the currency of Japan?Yen,Yuan,Won,Ringgit",
-    "Which movie features the character Jack Sparrow?Pirates of the Caribbean,Lord of the Rings,Harry Potter,Star Wars",
-    "Who sang the song 'Thriller'?Michael Jackson,Prince,Madonna,Whitney Houston",
-    "What does CPU stand for?Central Processing Unit,Central Power Unit,Computer Processing Unit,Core Processor Utility",
-    "Which planet is known as the Red Planet?Mars,Jupiter,Venus,Mercury",
-    "What is the main ingredient in guacamole?Avocado,Tomato,Cucumber,Lettuce",
-    "What language is primarily spoken in Brazil?Portuguese,Spanish,French,English",
-    "Which country invented pizza?Italy,France,USA,Greece",
-    "What animal is known as the King of the Jungle?Lion,Tiger,Elephant,Bear",
-    "What gas do plants absorb from the atmosphere?Carbon dioxide,Oxygen,Nitrogen,Hydrogen",
-    "What is the square root of 64?8,6,7,9",
-    "Which instrument has 88 keys?Piano,Guitar,Violin,Saxophone",
-    "What is the name of the galaxy we live in?Milky Way,Andromeda,Whirlpool,Sombrero",
-    "What does UFO stand for?Unidentified Flying Object,Universal Flying Object,Unknown Flying Object,Undocumented Flying Operation",
-    "Who discovered penicillin?Alexander Fleming,Marie Curie,Louis Pasteur,Isaac Newton"
-]
+def sum_nums (*args):
+    sum = 0
+    for el in args:
+        if type(el) == int:
+            sum += el
+    return sum
 
-md_quest = []
-for i in questions:
-    ind = i.index("?")
-    question = i[:ind + 1]
-    answers = i[ind + 1:].split(",")
-    md_quest.append({
-        "question": question,
-        "answers": answers,
-        "correct": answers[0]
-    })
+print(sum_nums(9,8,[45,8],'hello',18))
 
-quests = random.sample(md_quest, 10)
-score = 0
-for q in quests:
-    print("\n" + q["question"])
-    random.shuffle(q["answers"])
-    for i, answer in enumerate(q["answers"], 1):
-        print(f"{i}. {answer}")
+################################  2
 
-    user = int(input("Your answer please (1 - 4): "))
-    user = q["answers"][user - 1]
+def count_mstr (*args):
+    return len([el for el in args if type(el) == str])
 
-    if user == q["correct"]:
-        print("YESSS !")
-        score += 1
-    else:
-        print(f"NOOO ! {q['correct']}")
+print(count_mstr('hello',4,8,7,[4,5],'world'))
 
-print(f"Your score : {score} / 10")
+################################  3
+
+def sum_mid (*args):
+    if len(args) == 0:
+        return 0
+    return sum(args) / len(args)
+
+print(sum_mid(3,6,9,8,12))
+
+################################  4
+
+def results (a,b):
+    return [a + b, a - b, b - a, a * b, a / b, b / a]
+
+print(results(5,9))
+
+################################  5
+
+def upper (str):
+    upp = ""
+    for i in str:
+        if i == " ":
+            upp += i
+        elif 97 <= ord(i) <= 122:
+            upp += chr(ord(i) - 32)
+        else:
+            upp += i
+    return upp
+
+print(upper('hello good world'))
+
+################################  6
+
+def lower (str):
+    low = ""
+    for i in str:
+        if i == " ":
+            low += i
+        elif 65 <= ord(i) <= 90:
+            low += chr(ord(i) + 32)
+        elif 97 <= ord(i) <= 122:
+            low += i
+        else:
+            low += i
+    return low
+
+print(lower('HELLO GOOD WORLD'))
+
+################################  7
+
+def title(text):
+    words = text.split()
+    md = []
+    for word in words:
+        if len(word) > 0:
+            new_word = word[0].upper() + word[1:].lower()
+            md.append(new_word)
+        else:
+            md.append(word)
+    return ' '.join(md)
+
+print(title('hello good world'))
+
+################################  8
+
+def reversed (str):
+    return str[::-1]
+
+print(reversed('hello world'))
+
+################################  9
+
+def subString (str,a,b):
+    return str[a+1:b]
+
+print(subString('substring',2,6))
+
+################################  10
+
+def longest (mstr):
+    long = ''
+    for el in mstr.split():
+        if len(long) < len(el):
+            long = el
+    return long
+
+print(longest('hello good world!'))
