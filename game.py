@@ -44,8 +44,8 @@ def my_game ():
     elif md['p2'] == 0:
         print("Player 2 - you lose!")
 
-    again = input("Play again? (yes/no): ").lower()
-    if again == "yes":
+    again = input("Play again? (y/n): ").lower()
+    if again == "y":
         my_game()
 
 my_game()
