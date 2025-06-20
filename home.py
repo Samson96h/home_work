@@ -42,3 +42,20 @@ def recursive_count(arr):
     return 1 + recursive_count(arr[1:])
 
 print(recursive_count([4, 8, 96, 78, 56]))
+
+
+from random import randint
+
+def quick_sort(lst):
+    if len(lst) <= 1:
+        return lst
+    index = randint(0, len(lst) - 1)
+    pivot = lst[index]
+    rest = lst[:index] + lst[index + 1:]
+
+    less = [i for i in rest if i <= pivot]
+    greater = [i for i in rest if i > pivot]
+
+    return quick_sort(less) + [pivot] + quick_sort(greater)
+
+print(quick_sort([4, 8, 96, 78, 56]))
