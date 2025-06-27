@@ -40,7 +40,7 @@ class MList:
     def __setitem__(self, index, value):
         self.__my_list[index] = value
 
-    def __repr__(self):
+    def __str__(self):
         return str(self.list)
 
 
