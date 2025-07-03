@@ -1,13 +1,18 @@
 import argparse
-import xlsxwriter
+import os
+try:
+    import xlsxwriter
+except ImportError:
+    os.system("pip install xlsxwriter")
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-f", "--file", default="users.txt", help="Input file name")
-parser.add_argument("-x", "--excel", default="sorted_users.xlsx", help="Excel output file name")
-parser.add_argument("-a", action="store_true", help="Sort alphabetically by name")
-parser.add_argument("-p", "--prog", help="Filter by profession (e.g., Programmer)")
 
-args = parser.parse_args()
+def parser_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--file", default="users.txt", help="Input file name")
+    parser.add_argument("-x", "--excel", default="sorted_users.xlsx", help="Excel output file name")
+    parser.add_argument("-a", action="store_true", help="Sort alphabetically by name")
+    parser.add_argument("-p", "--prog", help="Filter by profession (e.g., Programmer)")
+    return parser.parse_args()
 
 def get_data(fname):
     ml = []
@@ -56,6 +61,7 @@ def write_data_excel(workbook, sheet_name, data, filtered=None, filter_sheet_nam
         write_people_rows(worksheet_filtered, 1, filtered, green_fill)
 
 def main():
+    args = parser_arguments()
     data = get_data(args.file)
 
     if args.a:
