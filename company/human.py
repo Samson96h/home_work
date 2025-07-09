@@ -2,9 +2,18 @@ from abc import ABC, abstractmethod
 
 class Human(ABC):
     def __init__(self, name, lname, age):
-        self.__name = name
-        self.__last_name = lname
-        self.__age = age
+        if type(name) == str:
+            self.name = name
+        else:
+            self.name = "Jack"
+        if type(lname) == str:
+            self.last_name = lname
+        else:
+            self.last_name = "Smith"
+        if type(age) == int:
+            self.age = age
+        else:
+            self.age = 18
 
     @property
     def name(self):
@@ -12,7 +21,10 @@ class Human(ABC):
 
     @name.setter
     def name(self, value):
-        self.__name = value
+        if type(value) == str:
+            self.__name = value
+        else:
+            self.__name = "Jack"
 
     @property
     def last_name(self):
@@ -20,7 +32,10 @@ class Human(ABC):
 
     @last_name.setter
     def last_name(self, value):
-        self.__last_name = value
+        if type(value) == str:
+            self.__last_name = value
+        else:
+            self.__last_name = "Smith"
 
     @property
     def age(self):
@@ -32,6 +47,7 @@ class Human(ABC):
             self.__age = 16
         else:
             self.__age = age
+
 
     @abstractmethod
     def __str__(self):

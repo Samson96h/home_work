@@ -12,10 +12,10 @@ class Manager(Human):
     def hire(self, emp):
         if emp in self.emp:
             print(f"{emp.name} is already hired")
-        if emp.busy == False and emp.age >= 18:
+        if emp.isbusy == False and emp.age >= 18:
             if len(self.__emp) < 10:
                 self.__emp.append(emp)
-                emp.busy = True
+                emp.isbusy = True
                 print(f'{emp.name} successfully hired')
             else:
                 print("Cannot hire more than 10 employees")
@@ -25,7 +25,7 @@ class Manager(Human):
     def fire(self, emp):
         if emp in self.emp:
             self.__emp.remove(emp)
-            emp.busy = False
+            emp.isbusy = False
             print(f'{emp.name} successfully fired')
 
     def show_employ(self):

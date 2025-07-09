@@ -4,7 +4,7 @@ class Employee(Human):
     def __init__(self, name, lname, age, prof, busy=False):
         super().__init__(name, lname, age)
         self.__profession = prof
-        self.__busy = busy
+        self.__isbusy = busy
 
     @property
     def profession(self):
@@ -15,12 +15,12 @@ class Employee(Human):
         self.__profession = profession
 
     @property
-    def busy(self):
-        return self.__busy
+    def isbusy(self):
+        return self.__isbusy
 
-    @busy.setter
-    def busy(self, busy):
-        self.__busy = busy
+    @isbusy.setter
+    def isbusy(self, busy):
+        self.__isbusy = busy
 
     def __str__(self):
         return f"My name is {self.name} {self.last_name} i am {self.age} years old"
